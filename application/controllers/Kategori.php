@@ -24,7 +24,7 @@ class Kategori extends MY_Controller {
     $this->form_validation->set_rules('nm_kategori', 'Nama kategori', 'required');
     
     if($this->form_validation->run() === FALSE) {
-      $this->load->admin_template('admin/agreement/create', $data);
+      $this->load->admin_template('admin/agreement/create');
     } else {
       $data['kode_baru'] = $this->kode_baru->generate_code('kategori', 'P');
 
