@@ -19,7 +19,7 @@ class Kategori_model extends MY_Model {
     return $this->insert($data);
   }
 
-  public function delete_agreement($id)
+  public function delete_kategori($id)
   {
     return $this->delete($id);
   }

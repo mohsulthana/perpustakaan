@@ -41,9 +41,9 @@ class Kategori extends MY_Controller {
   public function delete_kategori()
   {
     $data['title']     = 'Delete data';
-    $id = $this->input->post('kd_kategori');
+    $id = $this->input->post('id');
 
-    echo $this->session->set_flashdata('success_delete', 'Your data has successfully deleted');
+    // echo $this->session->set_flashdata('success_delete', 'Your data has successfully deleted');
     $query = $this->kategori_model->delete_kategori($id);
     echo json_encode($query);
   }

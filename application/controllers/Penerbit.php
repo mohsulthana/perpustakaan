@@ -24,7 +24,7 @@ class Penerbit extends MY_Controller {
     $this->form_validation->set_rules('nm_penerbit', 'Nama penerbit', 'required');
     
     if($this->form_validation->run() === FALSE) {
-      $this->load->admin_template('admin/agreement/create', $data);
+      $this->load->admin_template('admin/agreement/create');
     } else {
       $data['kode_baru'] = $this->kode_baru->generate_code('penerbit', 'P');
 
@@ -41,7 +41,7 @@ class Penerbit extends MY_Controller {
   public function delete_penerbit()
   {
     $data['title']     = 'Delete data';
-    $id = $this->input->post('kd_penerbit');
+    $id = $this->input->post('id');
 
     echo $this->session->set_flashdata('success_delete', 'Your data has successfully deleted');
     $query = $this->penerbit_model->delete_penerbit($id);

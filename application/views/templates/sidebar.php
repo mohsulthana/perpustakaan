@@ -94,7 +94,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/icons.html">
+            <a class="nav-link" href="<?= base_url('user');?>">
               <i class="ni ni-circle-08 text-blue"></i> Data User
             </a>
           </li>
@@ -109,23 +109,22 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/tables.html">
+            <a class="nav-link" href="<?= base_url('buku');?>">
               <i class="ni ni-bullet-list-67 text-blue"></i> Data Buku
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/login.html">
+            <a class="nav-link" href="<?= base_url('siswa');?>">
               <i class="ni ni-single-02 text-orange"></i> Data Siswa
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/login.html">
+            <a class="nav-link" href="<?= base_url('pengadaan');?>">
               <i class="ni ni-ruler-pencil text-yellow"></i> Data Pengadaan
             </a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link" href="./examples/login.html">
+            <a class="nav-link" href="<?= base_url('peminjaman');?>">
               <i class="ni ni-key-25 text-info"></i> Peminjaman Buku
             </a>
           </li>

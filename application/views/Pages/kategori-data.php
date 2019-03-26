@@ -33,9 +33,8 @@
                       <?= $kategoris->nm_kategori; ?>
                     </td>
                     <td class="text-right">
-                      <a data-id="<?= $kategoris->kd_kategori; ?>" class="btn btn-sm btn-danger btn-delete">Delete</a>
+                      <button data-id="<?= $kategoris->kd_kategori; ?>" class="btn btn-sm btn-danger btn-delete">Delete</button>
                       <a href="" data-toggle="modal" data-target="#editData<?= $kategoris->kd_kategori;?>" class="btn btn-sm btn-info">Edit</a>
-                          <!-- <a class="btn btn-danger btn-delete" data-id="<?= $agreements['id'];?>">Delete</a> -->
                     </td>
                   </tr>
                 <?php }; ?>
@@ -49,6 +48,9 @@
   </div>
 </div>
 
+<?php echo validation_errors(); ?>
+<?php echo form_open('kategori/add_kategori'); ?>
+<?php $error; ?>
 <div class="modal fade" id="addData" tabindex="-1" role="dialog" aria-labelledby="addDataLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -59,10 +61,6 @@
         </button>
       </div>
       <div class="modal-body">
-        <?php echo validation_errors(); ?>
-        <?php echo form_open('kategori/add_kategori'); ?>
-        <?php $error; ?>
-
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
@@ -77,7 +75,6 @@
             </div>
           </div>
         </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
@@ -86,6 +83,7 @@
     </div>
   </div>
 </div>
+</form>
 
 <?php foreach($kategori as $kategoris) {?>
 <div class="modal fade" id="editData<?= $kategoris->kd_kategori;?>" tabindex="-1" role="dialog" aria-labelledby="editDataLabel" aria-hidden="true">
@@ -145,7 +143,7 @@
         }).then((result) => {
           if (result.value) {
             $.ajax({
-              url: '<?= base_url('kategori/delete_kategori');?>',
+              url: "<?= base_url('kategori/delete_kategori');?>",
               method: "POST",
               data: {id: kode},
               beforeSend: function() {

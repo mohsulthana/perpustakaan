@@ -48,6 +48,9 @@
   </div>
 </div>
 
+<?php echo validation_errors(); ?>
+<?php echo form_open('penerbit/add_penerbit'); ?>
+<?php $error; ?>
 <div class="modal fade" id="addData" tabindex="-1" role="dialog" aria-labelledby="addDataLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -58,10 +61,6 @@
         </button>
       </div>
       <div class="modal-body">
-        <?php echo validation_errors(); ?>
-        <?php echo form_open('penerbit/add_penerbit'); ?>
-        <?php $error; ?>
-
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
@@ -80,11 +79,12 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-        <button type="subtmit" class="btn btn-sm btn-primary" value="submit">Save changes</button>
+        <button type="submit" class="btn btn-sm btn-primary" value="submit">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+</form>
 
 <?php foreach($penerbit as $penerbits) {?>
 <div class="modal fade" id="editData<?= $penerbits->kd_penerbit;?>" tabindex="-1" role="dialog" aria-labelledby="editDataLabel" aria-hidden="true">
@@ -118,7 +118,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-        <button type="subtmit" class="btn btn-sm btn-primary" value="submit">Save changes</button>
+        <button type="submit" class="btn btn-sm btn-primary" value="submit">Save changes</button>
       </div>
       </form>
     </div>
