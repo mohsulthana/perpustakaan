@@ -12,7 +12,7 @@ class Siswa extends MY_Controller {
 
   public function index()
   {
-    $data['title']    = 'Data siswa';
+    $data['title']    = 'Data Siswa';
     $data['session']  = $this->session->userdata();
     $data['siswa']    = $this->siswa_model->get_siswa();
     $data['header']   = 'Data siswa';

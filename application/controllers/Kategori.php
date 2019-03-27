@@ -10,7 +10,7 @@ class Kategori extends MY_Controller {
 
   public function index()
   {
-    $data['title']    = 'Data kategori';
+    $data['title']    = 'Data Kategori';
     $data['session']  = $this->session->userdata();
     $data['kategori'] = $this->kategori_model->get_kategori();
 
