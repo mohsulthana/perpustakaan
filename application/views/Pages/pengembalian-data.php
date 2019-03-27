@@ -8,7 +8,7 @@
               <h1 class="mb-0"><?= $title; ?></h1>
             </div>
             <div class="d-flex flex-row-reverse container-fluid">
-              <a class="btn btn-sm btn-success" href="<?= base_url('peminjaman/add');?>">Add data</a>
+              <a class="btn btn-sm btn-info" href="<?= base_url('pengembalian/dikembalikan');?>">Data dikembalikan</a>
             </div>
             <div class="table-responsive container-fluid my-5">
               <table id="table" class="table align-items-center table-flush">
@@ -19,35 +19,35 @@
                     <th scope="col">No. Pinjam</th>
                     <th scope="col">NIS</th>
                     <th scope="col">Nama Siswa</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Lama Pinjam</th>
                     <th scope="col">Tools</th>
                   </tr>
                 </thead>
                 <tbody>
-                <?php $no = 1; foreach($peminjaman as $peminjamans) {?>
+                <?php $no = 1; foreach($pengembalian as $pengembalians) {?>
                   <tr>
                     <th scope="row">
                       <?= $no++; ?>
                     </th>
                     <td>
-                      <?= $peminjamans->tgl_pinjam; ?>
+                      <?= $pengembalians->tgl_pinjam; ?>
                     </td>
                     <td>
-                      <?= $peminjamans->no_pinjam; ?>
+                      <?= $pengembalians->no_pinjam; ?>
                     </td>
                     <td>
-                      <?= $peminjamans->nisn; ?>
+                      <?= $pengembalians->nisn; ?>
                     </td>
                     <td>
-                      <?= $peminjamans->nm_siswa; ?>
+                      <?= $pengembalians->nm_siswa; ?>
                     </td>
                     <td>
-                      <?= $peminjamans->status; ?>
+                      <?= $pengembalians->lama_pinjam; ?> hari
                     </td>
                     <td class="text-right">
-                      <button data-id="<?= $peminjamans->no_pinjam; ?>" class="btn btn-sm btn-danger btn-delete">Delete</button>
-                      <a href="" data-toggle="modal" data-target="#editData/<?= $peminjamans->no_pinjam;?>" class="btn btn-sm btn-info">Edit</a>
-                      <a href="<?= base_url('peminjaman/nota_pinjam/' . $peminjamans->no_pinjam);?>" type="submit" class="btn btn-sm btn-primary" value="submit">Nota</a>
+                      <!-- <button data-id="<?= $pengembalians->no_pinjam; ?>" class="btn btn-sm btn-danger btn-delete">Delete</button> -->
+                      <a href="<?= base_url('pengembalian/pengembalian_baru/' . $pengembalians->no_pinjam);?>" class="btn btn-sm btn-success">Kembalikan</a>
+                      <!-- <a href="<?= base_url('pengembalian/nota_kembali/' . $pengembalians->no_pinjam);?>" type="submit" class="btn btn-sm btn-primary" value="submit">Cetak</a> -->
                     </td>
                   </tr>
                 <?php }; ?>
@@ -61,8 +61,8 @@
   </div>
 </div>
 
-<?php foreach($peminjaman as $peminjamans) {?>
-<div class="modal fade" id="editData/<?= $peminjamans->no_pinjam;?>" tabindex="-1" role="dialog" aria-labelledby="editDataLabel" aria-hidden="true">
+<?php foreach($pengembalian as $pengembalians) {?>
+<div class="modal fade" id="editData/<?= $pengembalians->no_pinjam;?>" tabindex="-1" role="dialog" aria-labelledby="editDataLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -73,7 +73,7 @@
       </div>
       <div class="modal-body">
         <?php echo validation_errors(); ?>
-        <?php echo form_open('peminjaman/update_peminjaman'); ?>
+        <?php echo form_open('pengembalian/update_pengembalian'); ?>
         <?php $error; ?>
 
         <div class="row">
@@ -86,15 +86,15 @@
         <div class="col-md-12">
           <div class="form-group">
             <label for="tgl_pinjam">Tanggal Pinjam</label>
-            <input type="date" name="tgl_pinjam" class="form-control" value="<?= $peminjamans->tgl_pinjam; ?>">
+            <input type="date" name="tgl_pinjam" class="form-control" value="<?= $pengembalians->tgl_pinjam; ?>">
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group">
             <label for="siswa">Nama Siswa</label>
             <select class="custom-select" name="siswa">
-              <?php foreach($peminjaman as $peminjamans) {?>
-                <option value="<?= $peminjamans->no_pinjam; ?>"><?= $peminjamans->nm_siswa; ?></option>
+              <?php foreach($pengembalian as $pengembalians) {?>
+                <option value="<?= $pengembalians->no_pinjam; ?>"><?= $pengembalians->nm_siswa; ?></option>
               <?php } ?>
             </select>
           </div>
@@ -102,18 +102,17 @@
         <div class="col-md-12">
           <div class="form-group">
             <label for="keterangan">Keterangan</label>
-            <input type="text" name="keterangan" class="form-control" value="<?= $peminjamans->keterangan; ?>">
+            <input type="text" name="keterangan" class="form-control" value="<?= $pengembalians->keterangan; ?>">
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group">
             <label for="lama_pinjam">Lama Pinjam (dalam hari)</label>
-            <input type="number" name="lama_pinjam" class="form-control" value="<?= $peminjamans->lama_pinjam; ?>"> 
+            <input type="number" name="lama_pinjam" class="form-control" value="<?= $pengembalians->lama_pinjam; ?>"> 
           </div>
         </div>
       </div>
-      <?php $no = 1; foreach($peminjaman_detil as $rows) {?>
-      <h1 style="color: grey;">Buku Ke-<?= $no++; ?></h1>
+      <h1 style="color: grey;">Buku</h1>
       <div class="row">
         <div class="col-md-12">
           <div class="form-group">
@@ -129,25 +128,26 @@
           <div class="form-group">
             <label for="judul_buku">Judul Buku</label>
               <select class="custom-select" name="judul">
-                  <option value="<?= $rows->kd_buku; ?>"><?= $rows->judul; ?></option>
+                <?php foreach($buku as $bukus) {?>
+                  <option value="<?= $bukus->kd_buku; ?>"><?= $bukus->judul; ?></option>
+                <?php } ?>
               </select>
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group">
             <label for="jumlah">Jumlah</label>
-            <input type="number" name="jumlah" class="form-control" value="<?= $rows->jumlah_bk; ?>">
+            <input type="number" name="jumlah" class="form-control" value="<?= $bukus->jumlah; ?>">
           </div>
         </div>
       </div>
-        <?php } ?>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
         <button type="subtmit" class="btn btn-sm btn-primary" value="submit">Save changes</button>
       </div>
+      </form>
     </div>
   </div>
-  </form>
 </div>
 <?php }; ?>
 
@@ -169,7 +169,7 @@
         }).then((result) => {
           if (result.value) {
             $.ajax({
-              url: "<?= base_url('peminjaman/delete_peminjaman');?>",
+              url: "<?= base_url('pengembalian/delete_pengembalian');?>",
               method: "POST",
               data: {id: kode},
               beforeSend: function() {

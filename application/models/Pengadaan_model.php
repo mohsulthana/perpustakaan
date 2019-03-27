@@ -13,15 +13,14 @@ class Pengadaan_Model extends MY_Model {
   {
     $this->db->select('*')->from('pengadaan');
     $this->db->join('buku', 'pengadaan.kd_buku = buku.kd_buku', 'left');
+    $this->db->join('kategori', 'buku.kd_kategori = kategori.kd_kategori', 'left');
     $query = $this->db->get();
     return $query;
   }
 
-  public function create_pengadaan($databuku, $data_transaksi)
+  public function create_pengadaan($pengadaan)
   {
-    $this->db->insert('pengadaan_detil', $databuku);
-    $this->insert($data_transaksi);
-    return true;
+    return $this->insert($pengadaan);
   }
 
   public function delete_pengadaan($id)
@@ -29,13 +28,10 @@ class Pengadaan_Model extends MY_Model {
     return $this->delete($id);
   }
 
-  public function update_pengadaan($id)
+  public function update_pengadaan($id, $data)
   {
-    $data = [
-      'nm_pengadaan'   => $this->input->post('nm_pengadaan')
-    ];
-    $query = $this->db->where('kd_pengadaan', $id);
-    return $this->db->update('pengadaan', $data);
+    $query = $this->update($id, $data);
+    return  $query;
   }
 
   public function tmp_pinjam($data) {

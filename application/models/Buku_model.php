@@ -27,7 +27,7 @@ class Buku_model extends MY_Model {
   public function update_buku($id)
   {
     $data = [
-      'nm_buku'   => $this->input->post('nm_buku')
+      'judul'   => $this->input->post('nm_buku')
     ];
     $query = $this->db->where('kd_buku', $id);
     return $this->db->update('buku', $data);

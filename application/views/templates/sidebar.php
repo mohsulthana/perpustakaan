@@ -129,7 +129,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/login.html">
+            <a class="nav-link" href="<?= base_url('pengembalian');?>">
               <i class="ni ni-collection text-red"></i> Pengembalian Buku
             </a>
           </li>

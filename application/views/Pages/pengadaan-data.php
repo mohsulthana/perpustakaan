@@ -86,7 +86,7 @@
             <div class="form-group">
               <label for="kategori">Kategori</label>
                 <select class="custom-select" id="kategori" name="kategori">
-                  <?php foreach($kodekategori = $kategori as $kategoris) {
+                  <?php foreach($kategori as $kategoris) {
                     echo "<option value='" . $kategoris->kd_kategori . "'>" . $kategoris->nm_kategori . "</option>";
                   } ?>
                 </select>
@@ -94,10 +94,28 @@
           </div>
           <div class="col-md-12">
             <div class="form-group">
-              <label for="judul_buku">Judul Buku</label>
+              <label for="judul">Judul Buku</label>
                 <select class="custom-select" name="judul" id="judul">
                   <option value="">Pilih</option>
                 </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="asal_buku">Asal Buku</label>
+              <input type="text" name="asal_buku" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="jumlah">Jumlah</label>
+              <input type="number" name="jumlah" class="form-control" min="0"  step="1">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="keterangan">Keterangan</label>
+              <input type="text" name="keterangan" class="form-control">
             </div>
           </div>
         </div>
@@ -111,7 +129,9 @@
 </div>
 </form>
 
-<?php $no = 1; foreach($pengadaan->result() as $pengadaans) {?>
+<?php echo validation_errors(); ?>
+<?php echo form_open('pengadaan/update_pengadaan'); ?>
+<?php $error; ?>
 <div class="modal fade" id="editData/<?= $pengadaans->no_pengadaan;?>" tabindex="-1" role="dialog" aria-labelledby="editDataLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -126,39 +146,60 @@
           <div class="col-md-12">
             <div class="form-group">
               <label for="no_pengadaan">Kode</label>
-              <input type="text" name="no_pengadaan" class="form-control" value="<?= $kode_baru; ?>" readonly>
+<?php $no = 1; foreach($pengadaan->result() as $pengadaans) {?>
+              <input type="text" name="no_pengadaan" class="form-control" value="<?= $pengadaans->no_pengadaan; ?>" readonly>
+<?php }; ?>
             </div>
           </div>
           <div class="col-md-12">
             <div class="form-group">
               <label for="tgl_pengadaan">Tanggal pengadaan</label>
+<?php $no = 1; foreach($pengadaan->result() as $pengadaans) {?>
               <input type="date" name="tgl_pengadaan" class="form-control" value="<?= $pengadaans->tgl_pengadaan; ?>">
+<?php }; ?>
             </div>
           </div>
           <div class="col-md-12">
             <div class="form-group">
               <label for="kategori">Kategori</label>
-                <select class="custom-select" name="kategori" onchange="checkvalue(this.value)">
-                  <?php foreach($kategori as $kategoris) {?>
-                    <option value="<?= $kode = $kategoris->kd_kategori; ?>"><?= $kategoris->nm_kategori; ?></option>
-                  <?php }; ?>
-                </select>
-            </div>
-          </div>
-          <div class="col-md-12">   
-            <div class="form-group">
-              <label for="judul">Buku</label>
-                <select class="custom-select" name="judul" onchange="checkvalue(this.value)">
-                  <?php foreach($buku as $bukus) {?>
-                    <option value="<?= $bukus->kd_buku; ?>" data-buku="<?= $kode; ?>"><?= $bukus->judul; ?></option>
-                  <?php }; ?>
+                <select class="custom-select" id="kategori" name="kategori">
+                  <option value="<?= $pengadaans->kd_kategori; ?>">Default: <?= $pengadaans->nm_kategori; ?></option>
+                  <?php foreach($kodekategori = $kategori as $kategoris) {
+                    echo "<option value='" . $kategoris->kd_kategori . "'>" . $kategoris->nm_kategori . "</option>";
+                  } ?>
                 </select>
             </div>
           </div>
           <div class="col-md-12">
             <div class="form-group">
+              <label for="judul">Judul Buku</label>
+                <select class="custom-select" name="judul" id="judul">
+                  <option value="">Pilih</option>
+                </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="asal_buku">Asal Buku</label>
+<?php $no = 1; foreach($pengadaan->result() as $pengadaans) {?>
+              <input type="text" name="asal_buku" class="form-control" value="<?= $pengadaans->asal_buku; ?>">
+<?php }; ?>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
               <label for="jumlah">Jumlah</label>
-              <input type="text" name="jumlah" class="form-control" value="<?= $pengadaans->jumlah; ?>">
+<?php $no = 1; foreach($pengadaan->result() as $pengadaans) {?>
+              <input type="number" name="jumlah" class="form-control" min="0"  step="1" value="<?= $pengadaans->jumlah; ?>">
+<?php }; ?>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="keterangan">Keterangan</label>
+<?php $no = 1; foreach($pengadaan->result() as $pengadaans) {?>
+              <input type="text" name="keterangan" class="form-control" value="<?= $pengadaans->keterangan; ?>">
+<?php }; ?>
             </div>
           </div>
         </div>
@@ -170,7 +211,7 @@
     </div>
   </div>
 </div>
-<?php }; ?>
+</form>
 
 <script>
   $(document).ready(function() {
@@ -184,6 +225,7 @@
         dataType: "JSON",
         success: function(response) {
           $("#judul").html(response.list_buku).show();
+          console.log(response);
         },
         error: function (xhr, ajaxOptions, thrownError) {
           console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);

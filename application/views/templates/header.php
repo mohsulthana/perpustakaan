@@ -7,6 +7,8 @@
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
   <title><?= $title; ?></title>
+  <!-- Free awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <!-- Favicon -->
   <link href="<?= asset_url('img/brand/favicon.png');?>" rel="icon" type="image/png">
   <!-- Bootstrap 4 -->
