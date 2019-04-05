@@ -27,14 +27,25 @@ class Auth extends MY_Controller {
       'password'    => $password
     ];
 
-    $query = $this->auth_model->login('pengguna', $data)->row();
+    $query = $this->auth_model->login('pengguna', $data);
 
-    $userdata = [
-      'username'    => $query->username,
-      'nm_user'     => $query->nm_user,
-      'status'      => 'Logged in'
-    ];
-    $this->session->set_userdata($userdata);
-    redirect(base_url());
+    if($query->num_rows() === 1) {
+      $row = $query->row();
+      $userdata = [
+        'kd_user'     => $row->kd_user,
+        'username'    => $row->username,
+        'password'    => $row->password,
+        'nm_user'     => $row->nm_user,
+        'status'      => 'Logged in',
+        'role'        => $row->role,
+        'gambar'      => $row->gambar
+      ];
+
+      $this->session->set_userdata($userdata); 
+      redirect(base_url());
+    } else {
+      $this->session->set_flashdata('login_error', 'Your account is not authorized');
+      redirect(base_url('auth'));
+    }
   }
 }

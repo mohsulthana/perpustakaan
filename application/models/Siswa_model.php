@@ -29,4 +29,9 @@ class Siswa_model extends MY_Model {
     $query = $this->db->where('kd_siswa', $id);
     return $this->db->update('siswa', $data);
   }
+
+  public function count_siswa()
+  {
+    return $this->db->get('siswa')->num_rows();
+  }
 }

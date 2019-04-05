@@ -14,7 +14,7 @@ class Kategori extends MY_Controller {
     $data['session']  = $this->session->userdata();
     $data['kategori'] = $this->kategori_model->get_kategori();
 
-    $data['kode_baru'] = $this->kode_baru->generate_code('kategori', 'P');
+    $data['kode_baru'] = $this->kode_baru->generate_code('kategori', 'K');
 
     $this->load->template('Pages/kategori-data', $data);
   }
@@ -26,7 +26,7 @@ class Kategori extends MY_Controller {
     if($this->form_validation->run() === FALSE) {
       $this->load->admin_template('admin/agreement/create');
     } else {
-      $data['kode_baru'] = $this->kode_baru->generate_code('kategori', 'P');
+      $data['kode_baru'] = $this->kode_baru->generate_code('kategori', 'K');
 
       $data = [
         'kd_kategori'   => $data['kode_baru'],

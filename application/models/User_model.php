@@ -11,6 +11,7 @@ class User_model extends MY_Model {
 
   public function get_user()
   {
+    $this->db->join('role', 'pengguna.role = role.kd_role', 'left');
     return $this->get_by_order($this->data['primary_key'], 'ASC', $cond = '');
   }
 
@@ -31,5 +32,10 @@ class User_model extends MY_Model {
     ];
     $query = $this->db->where('kd_user', $id);
     return $this->db->update('pengguna', $data);
+  }
+
+  public function edit_profile($kd, $data)
+  {
+    return $this->update($kd, $data);
   }
 }

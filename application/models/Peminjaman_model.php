@@ -14,7 +14,7 @@ class Peminjaman_Model extends MY_Model {
     $this->db->select('*')->from('peminjaman');
     $this->db->join('siswa', 'peminjaman.kd_siswa = siswa.kd_siswa', 'inner');
     // $this->db->join('peminjaman_detil', 'peminjaman.no_pinjam = peminjaman_detil.no_pinjam', 'inner');
-    // $this->db->join('buku', 'peminjaman_detil.kd_buku = buku.kd_buku', 'inner');
+    // $this->db->join('buku', 'peminjaman.kd_buku = buku.kd_buku', 'inner');
     $query = $this->db->get();
     return $query;
   }
@@ -24,6 +24,16 @@ class Peminjaman_Model extends MY_Model {
     $this->db->select('*')->from('peminjaman_detil');
     $this->db->join('buku', 'peminjaman_detil.kd_buku = buku.kd_buku', 'inner');
     return $this->db->get();
+  }
+
+  public function count_peminjaman()
+  {
+    return $this->db->get_where('peminjaman', array('status' => 'Pinjam'))->num_rows();
+  }
+
+  public function count_dikembalikan()
+  {
+    return $this->db->get_where('peminjaman', array('status' => 'Kembali'))->num_rows();
   }
 
   public function nota_pinjam($id)
@@ -50,6 +60,13 @@ class Peminjaman_Model extends MY_Model {
   public function get_book_by_category($kd_kategori)
   {
     $this->db->where('kd_kategori', $kd_kategori);
+    $result = $this->db->get('buku')->result();
+    return $result;
+  }
+
+  public function get_book_by_publisher($kd_penerbit)
+  {
+    $this->db->where('kd_penerbit', $kd_penerbit);
     $result = $this->db->get('buku')->result();
     return $result;
   }

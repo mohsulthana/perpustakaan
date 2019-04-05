@@ -16,6 +16,7 @@ class Auth_model extends CI_Model {
 
   public function get_user()
   {
+    $this->db->join('role', 'role.kd_role = pengguna.role', 'join');
     return $this->db->get('pengguna');
   }
 }

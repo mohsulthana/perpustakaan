@@ -42,7 +42,7 @@
                       <?= $peminjamans->nm_siswa; ?>
                     </td>
                     <td>
-                      <?= $peminjamans->status; ?>
+                      <?= $peminjamans->status === 'Kembali' ? '<button class="btn btn-success btn-sm" disabled>Kembali</button>' : '<button class="btn btn-sm btn-danger" disabled>Pinjam</button>' ?>
                     </td>
                     <td class="text-right">
                       <button data-id="<?= $peminjamans->no_pinjam; ?>" class="btn btn-sm btn-danger btn-delete">Delete</button>

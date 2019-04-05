@@ -15,7 +15,6 @@ class Siswa extends MY_Controller {
     $data['title']    = 'Data Siswa';
     $data['session']  = $this->session->userdata();
     $data['siswa']    = $this->siswa_model->get_siswa();
-    $data['header']   = 'Data siswa';
 
     $data['penerbit'] = $this->penerbit_model->get_penerbit();
     $data['kategori'] = $this->kategori_model->get_kategori();

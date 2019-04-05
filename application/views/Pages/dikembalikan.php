@@ -46,9 +46,7 @@
                       <?= $pengembalians->denda; ?> Rupiah
                     </td>
                     <td class="text-right">
-                      <!-- <button data-id="<?= $pengembalians->no_pinjam; ?>" class="btn btn-sm btn-danger btn-delete">Delete</button> -->
                       <a href="<?= base_url('pengembalian/pengembalian_baru/' . $pengembalians->no_pinjam);?>" class="btn btn-sm btn-success">Cetak</a>
-                      <a href="<?= base_url('pengembalian/nota_kembali/' . $pengembalians->no_pinjam);?>" type="submit" class="btn btn-sm btn-primary" value="submit">Batal</a>
                     </td>
                   </tr>
                 <?php }; ?>

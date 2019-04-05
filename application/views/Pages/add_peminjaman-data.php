@@ -9,6 +9,7 @@
             </div>
             <div class="card-body">
               <h1 style="color: grey;">Transaksi</h1>
+              <small style="color: red">Isi daftar buku terlebih dahulu</small>
               <?php echo validation_errors(); ?>
               <?php echo form_open('peminjaman/insert'); ?>
               <?php $error; ?>
@@ -57,7 +58,7 @@
                   <label for="kategori">Kategori</label>
                     <select class="custom-select" id="kategori" name="kategori">
                         <option value="">Pilih</option>
-                      <?php foreach($kodekategori = $kategori as $kategoris) {
+                      <?php foreach($kategori as $kategoris) {
                         echo "<option value='" . $kategoris->kd_kategori . "'>" . $kategoris->nm_kategori . "</option>";
                       } ?>
                     </select>
@@ -74,7 +75,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="jumlah">Jumlah</label>
-                  <input type="number" name="jumlah" id="jumlah_buku" class="form-control" min="0"  step="1">
+                  <input type="number" name="jumlah_buku" id="jumlah_buku" class="form-control" min="0"  step="1">
                 </div>
                 <button type="submit" name="tambahbuku" value="tambahbukuNew" class="btn btn-sm btn-success btn-book-queue">Add book queue</button>
                 <hr>

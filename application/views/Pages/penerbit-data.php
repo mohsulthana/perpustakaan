@@ -5,7 +5,7 @@
         <div class="col">
           <div class="card shadow">
             <div class="card-header border-0">
-              <h1 class="mb-0">Card tables</h1>
+              <h1 class="mb-0"><?= $title; ?></h1>
             </div>
             <div class="d-flex flex-row-reverse container-fluid">
               <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#addData">Add data</button>

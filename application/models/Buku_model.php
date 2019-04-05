@@ -32,4 +32,9 @@ class Buku_model extends MY_Model {
     $query = $this->db->where('kd_buku', $id);
     return $this->db->update('buku', $data);
   }
+
+  public function count_book()
+  {
+    return $this->db->get('buku')->num_rows();
+  }
 }

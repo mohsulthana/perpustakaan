@@ -5,8 +5,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand pt-0" href="./index.html">
-        <img src="<?= asset_url('img/brand/blue.png" class="navbar-brand-img');?>" alt="...">
+      <a class="navbar-brand pt-0" href="<?= base_url();?>">
+        <img src="<?= asset_url('img/brand/sma19.jpg');?>" height="1000" alt="...">
+        <p>SMA Negeri 19 Palembang</p>
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
@@ -93,58 +94,70 @@
               <i class="ni ni-tv-2 text-primary"></i> Home
             </a>
           </li>
+          <?php if($this->session->userdata('role') === '1') {?>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('user');?>">
               <i class="ni ni-circle-08 text-blue"></i> Data User
             </a>
           </li>
+          <?php }; ?>
+          <?php if($this->session->userdata('role') === '1' || $this->session->userdata('role') === '3') {?>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('penerbit');?>">
               <i class="ni ni-planet text-orange"></i> Data Penerbit
             </a>
           </li>
+          <?php }; ?>
+          <?php if($this->session->userdata('role') === '1' || $this->session->userdata('role') === '3') {?>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('kategori');?>">
               <i class="ni ni-settings-gear-65 text-yellow"></i> Data Kategori
             </a>
           </li>
+          <?php }; ?>
+          <?php if($this->session->userdata('role') === '1' || $this->session->userdata('role') === '3') {?>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('buku');?>">
               <i class="ni ni-bullet-list-67 text-blue"></i> Data Buku
             </a>
           </li>
+          <?php }; ?>
+          <?php if($this->session->userdata('role') === '1' || $this->session->userdata('role') === '3') {?>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('siswa');?>">
               <i class="ni ni-single-02 text-orange"></i> Data Siswa
             </a>
           </li>
+          <?php }; ?>
+          <?php if($this->session->userdata('role') === '1' || $this->session->userdata('role') === '3') {?>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('pengadaan');?>">
               <i class="ni ni-ruler-pencil text-yellow"></i> Data Pengadaan
             </a>
           </li>
+          <?php }; ?>
+          <?php if($this->session->userdata('role') === '1' || $this->session->userdata('role') === '3') {?>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('peminjaman');?>">
               <i class="ni ni-key-25 text-info"></i> Peminjaman Buku
             </a>
           </li>
+          <?php }; ?>
+          <?php if($this->session->userdata('role') === '1' || $this->session->userdata('role') === '3') {?>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('pengembalian');?>">
               <i class="ni ni-collection text-red"></i> Pengembalian Buku
             </a>
           </li>
+          <?php }; ?>
+          <?php if($this->session->userdata('role') === '1' || $this->session->userdata('role') === '3' || $this->session->userdata('role') === '2') {?>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/login.html">
+            <a class="nav-link" href="<?= base_url('reports');?>">
               <i class="ni ni-box-2 text-black"></i> Laporan
             </a>
           </li>
-          <hr>
-          <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('dashboard/logout');?>">
-              <i class="ni ni-user-run text-pink"></i> Logout
-            </a>
-          </li>
-        </ul
+          <?php }; ?>
+        </ul>
       </div>
     </div>
   </nav>

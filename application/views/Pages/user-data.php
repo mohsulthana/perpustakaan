@@ -90,6 +90,17 @@
               <input type="password" name="password" class="form-control">
             </div>
           </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="kategori">Role</label>
+                <select class="custom-select" id="role" name="role">
+                    <option value="">Pilih</option>
+                    <?php foreach($user as $users) {?>
+                      <option value="<?= $users->kd_role;?>"><?= $users->nm_role; ?></option>
+                    <?php }; ?>
+                </select>
+            </div>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
@@ -133,6 +144,17 @@
             <div class="form-group">
               <label for="username">Username</label>
               <input type="text" name="username" class="form-control" value="<?= $users->username; ?>">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="kategori">Role</label>
+                <select class="custom-select" id="role" name="role">
+                      <option value="<?= $users->kd_role; ?>">Default: <?= $users->nm_role; ?></option>
+                    <?php foreach($user as $users) {?>
+                      <option value="<?= $users->role;?>"><?= $users->nm_role; ?></option>
+                    <?php }; ?>
+                </select>
             </div>
           </div>
         </div>

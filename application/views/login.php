@@ -3,8 +3,10 @@
     <!-- Navbar -->
     <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
       <div class="container px-4">
-        <a class="navbar-brand" href="<?= asset_url('index.html');?>"> <img src="<?= asset_url();?>assets/img/brand/white.png" />
-        </a>
+      <a class="navbar-brand pt-0" href="<?= base_url();?>">
+        <img src="<?= asset_url('img/brand/sma19.jpg');?>" height="1000" alt="...">
+        <p>SMA Negeri 19 Palembang</p>
+      </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -23,29 +25,6 @@
               </div>
             </div>
           </div>
-          <!-- Navbar items -->
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="<?= asset_url('index.html');?>"> <i class="ni ni-planet"></i>
-                <span class="nav-link-inner--text">Dashboard</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="<?= asset_url('examples/register.html');?>"> <i class="ni ni-circle-08"></i>
-                <span class="nav-link-inner--text">Register</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="<?= asset_url('examples/login.html');?>"> <i class="ni ni-key-25"></i>
-                <span class="nav-link-inner--text">Login</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="<?= asset_url('examples/profile.html');?>"> <i class="ni ni-single-02"></i>
-                <span class="nav-link-inner--text">Profile</span>
-              </a>
-            </li>
-          </ul>
         </div>
       </div>
     </nav>
@@ -64,7 +43,12 @@
           <div class="card bg-secondary shadow border-0">
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Sign in with credentials</small>
+                <h3>Sign in Admin Perpustakaan</h3>
+                <?php if($this->session->flashdata('login_error')) {?>
+                  <div class="alert alert-danger">
+                    <?= $this->session->flashdata('login_error'); ?>
+                  </div>
+                <?php }?>
               </div>
               <form role="form" method="POST" action="<?= base_url('auth/login');?>">
                 <div class="form-group mb-3">
@@ -83,24 +67,10 @@
                     <input class="form-control" name="password" placeholder="Password" type="password">
                   </div>
                 </div>
-                <div class="custom-control custom-control-alternative custom-checkbox">
-                  <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                  <label class="custom-control-label" for=" customCheckLogin">
-                    <span class="text-muted">Remember me</span>
-                  </label>
-                </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary my-4">Sign in</button>
                 </div>
               </form>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-6">
-              <a href="#" class="text-light"><small>Forgot password?</small></a>
-            </div>
-            <div class="col-6 text-right">
-              <a href="#" class="text-light"><small>Create new account</small></a>
             </div>
           </div>
         </div>

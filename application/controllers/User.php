@@ -10,7 +10,7 @@ class User extends MY_Controller {
 
   public function index()
   {
-    $data['title']    = 'Data user';
+    $data['title']    = 'Data User';
     $data['session']  = $this->session->userdata();
     $data['user']     = $this->user_model->get_user();
 
@@ -20,16 +20,16 @@ class User extends MY_Controller {
   }
 
   public function add_user()
-  {
-    // $this->form_validation->set_rules('nm_user', 'Nama user', 'required');
-    
+  {    
       $data['kode_baru'] = $this->kode_baru->generate_code('pengguna', 'U');
 
       $data = [
         'kd_user'   => $data['kode_baru'],
         'nm_user'   => $this->input->post('nm_user'),
         'username'  => $this->input->post('username'),
-        'password'  => md5($this->input->post('password'))
+        'password'  => md5($this->input->post('password')),
+        'role'      => $this->post('role'),
+        'gambar'    => 'default.jpg'
       ];
 
       $this->user_model->create_user($data);
@@ -52,5 +52,18 @@ class User extends MY_Controller {
 
       $query = $this->user_model->update_user($id);
       redirect(base_url('user'));
+  }
+
+  public function edit_profil()
+  {
+    $kd = $this->post('kd_user');
+    $data = [
+      'nm_user'   => $this->post('nm_user'),
+      'username'  => $this->post('username'),
+      'password'  => $this->post('password')
+    ];
+    
+    $this->user_model->edit_profile($kd, $data);
+    redirect(base_url('dashboard/logout'));
   }
 }
