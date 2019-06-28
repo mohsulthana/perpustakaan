@@ -131,13 +131,6 @@
           <?php }; ?>
           <?php if($this->session->userdata('role') === '1' || $this->session->userdata('role') === '3') {?>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('pengadaan');?>">
-              <i class="ni ni-ruler-pencil text-yellow"></i> Data Pengadaan
-            </a>
-          </li>
-          <?php }; ?>
-          <?php if($this->session->userdata('role') === '1' || $this->session->userdata('role') === '3') {?>
-          <li class="nav-item">
             <a class="nav-link" href="<?= base_url('peminjaman');?>">
               <i class="ni ni-key-25 text-info"></i> Peminjaman Buku
             </a>

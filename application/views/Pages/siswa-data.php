@@ -6,6 +6,11 @@
           <div class="card shadow">
             <div class="card-header border-0">
               <h1 class="mb-0"><?= $title; ?></h1>
+              <?php if($this->session->userdata('message')) {
+                '<div class="alert alert-success">
+                  '. $this->session->userdata('message'). '
+                </div>';
+              }?>
             </div>
             <div class="d-flex flex-row-reverse container-fluid">
               <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#addData">Add data</button>
@@ -31,14 +36,13 @@
                       <?= $siswas->kd_siswa; ?>
                     </td>
                     <td>
-                      <?= $siswas->nm_siswa; ?>
+                      <a href="<?= base_url('siswa/edit_siswa/'.$siswas->kd_siswa);?>"><?= $siswas->nm_siswa; ?></a>
                     </td>
                     <td>
                       <?= $siswas->kelamin; ?>
                     </td>
                     <td class="text-right">
                       <button data-id="<?= $siswas->kd_siswa; ?>" class="btn btn-sm btn-danger btn-delete">Delete</button>
-                      <a href="" data-toggle="modal" data-target="#editData<?= $siswas->kd_siswa;?>" class="btn btn-sm btn-info">Edit</a>
                     </td>
                   </tr>
                 <?php }; ?>

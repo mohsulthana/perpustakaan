@@ -46,7 +46,8 @@ class Pengembalian extends MY_Controller {
     $data['kode_baru']      = $this->kode_baru->generate_code('pengembalian', 'KB');
 
     $data['siswa']          = $this->siswa_model->get_siswa();
-    $data['pengembalian']   = $this->pengembalian_model->get_dikembalikan()->result();
+    $data['pengembalian']   = $this->pengembalian_model->get_dikembalikan();
+    // $this->dump($data['pengembalian']->result()); exit;
     $data['kategori']       = $this->kategori_model->get_kategori();
 
     $this->load->template('Pages/dikembalikan', $data);

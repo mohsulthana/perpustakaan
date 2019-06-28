@@ -46,7 +46,6 @@
                     </td>
                     <td class="text-right">
                       <button data-id="<?= $peminjamans->no_pinjam; ?>" class="btn btn-sm btn-danger btn-delete">Delete</button>
-                      <a href="" data-toggle="modal" data-target="#editData/<?= $peminjamans->no_pinjam;?>" class="btn btn-sm btn-info">Edit</a>
                       <a href="<?= base_url('peminjaman/nota_pinjam/' . $peminjamans->no_pinjam);?>" type="submit" class="btn btn-sm btn-primary" value="submit">Nota</a>
                     </td>
                   </tr>

@@ -22,13 +22,16 @@ class Pengembalian_Model extends MY_Model {
   {
     $this->db->join('siswa', 'pengembalian.kd_siswa = siswa.kd_siswa', 'left');
     $this->db->join('peminjaman', 'pengembalian.no_pinjam = pengembalian.no_pinjam', 'left');
+    $this->db->where('peminjaman.status', 'kembali');
     $query = $this->db->get('pengembalian');
+    // var_dump($query); exit;
     return $query;
   }
 
   public function pengembalian_baru($id)
   {
     $this->db->join('siswa', 'siswa.kd_siswa = peminjaman.kd_siswa', 'left');
+    $this->db->where('no_pinjam', $id);
     return $this->db->get('peminjaman');
   }
 

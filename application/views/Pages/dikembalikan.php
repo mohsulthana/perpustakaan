@@ -22,7 +22,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                <?php $no = 1; foreach($pengembalian as $pengembalians) {?>
+                <?php $no = 1; foreach($pengembalian->result() as $pengembalians) {?>
                   <tr>
                     <th scope="row">
                       <?= $no++; ?>

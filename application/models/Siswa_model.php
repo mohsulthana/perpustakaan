@@ -14,6 +14,11 @@ class Siswa_model extends MY_Model {
     return $this->get_by_order($this->data['primary_key'], 'ASC', $cond = '');
   }
 
+  public function get_siswa_by_id($id)
+  {
+    return $this->db->get_where('siswa', ['kd_siswa' => $id]);
+  }
+
   public function create_siswa($data)
   {
     return $this->insert($data);

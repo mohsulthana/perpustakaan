@@ -86,6 +86,7 @@ class Peminjaman extends MY_Controller {
         $kode_buku = $moves->kd_buku;
         $jumlah    = $moves->jumlah;
     }
+    $this->dump($kode_buku); exit;
 
     $data = [
       'no_pinjam'   => $data['kode_baru'],

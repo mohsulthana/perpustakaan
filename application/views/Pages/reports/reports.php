@@ -61,17 +61,6 @@
               </a>
             </div>
             <div class="col-xl-3 col-lg-6">
-              <a href="<?= base_url('reports/pengadaan_report');?>">
-                <div class="card card-stats mt-4 mb-xl-0">
-                  <div class="card-body">
-                    <div class="row">
-                      <p class="mb-0 text-md offset-md-2"><i class="ni ni-ruler-pencil text-yellow"></i> Laporan Pengadaan</p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-xl-3 col-lg-6">
               <a href="<?= base_url('reports/peminjaman_report');?>">
                 <div class="card card-stats mt-4 mb-xl-0"">
                   <div class="card-body">
