@@ -65,7 +65,7 @@
                 <div class="card card-stats mt-4 mb-xl-0"">
                   <div class="card-body">
                     <div class="row">
-                      <p class="mb-0 text-md"><i class="ni ni-key-25 text-info"></i> Laporan Peminjaman Buku</p>
+                      <p class="mb-0 text-md"><i class="ni ni-key-25 text-info"></i> Lap. Peminjaman Buku</p>
                     </div>
                   </div>
                 </div>

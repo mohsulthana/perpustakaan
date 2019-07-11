@@ -1,6 +1,6 @@
 
     <!-- Header -->
-    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8" style="background-image: url('../../../assets/photo/bg/sma.jpg')">
       <div class="container-fluid">
         <div class="header-body">
           <!-- Card stats -->
