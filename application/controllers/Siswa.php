@@ -65,7 +65,7 @@ class Siswa extends MY_Controller {
         redirect(base_url('siswa'));
       }
 
-      $file = move_uploaded_file($tmpNama, './photo/siswa/' . $namafoto);
+      $file = move_uploaded_file($tmpNama, './assets/photo/siswa/' . $namafoto);
 
       $data = [
         'kd_siswa'  => $data['kode_baru'],
