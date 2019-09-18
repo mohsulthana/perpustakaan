@@ -15,7 +15,7 @@ class Peminjaman_Model extends MY_Model {
     $this->db->join('peminjaman_detil', 'peminjaman.no_pinjam = peminjaman_detil.no_pinjam', 'inner');
     $this->db->join('pengembalian', 'peminjaman.no_pinjam = pengembalian.no_pinjam', 'inner');
     $query = $this->db->get('peminjaman');
-    return $query->result();
+    return $query;
   }
 
   public function get_peminjaman_detil()

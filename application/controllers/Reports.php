@@ -110,7 +110,7 @@ class Reports extends MY_Controller {
   {
     $data['title']    = 'Laporan Data Peminjaman';
     $data['session']  = $this->session->userdata();
-    $data['peminjaman']= $this->peminjaman_model->get_peminjaman();
+    $data['peminjaman']= $this->peminjaman_model->get_peminjaman()->result();
     $data['penerbit'] = $this->penerbit_model->get_penerbit();
 
     $this->load->view('templates/header', $data);
