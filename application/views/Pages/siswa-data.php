@@ -20,7 +20,7 @@
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Kode</th>
+                    <th scope="col">NISN</th>
                     <th scope="col">Nama Siswa</th>
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">Tools</th>
@@ -33,7 +33,7 @@
                       <?= $no++; ?>
                     </th>
                     <td>
-                      <?= $siswas->kd_siswa; ?>
+                      <?= $siswas->nisn; ?>
                     </td>
                     <td>
                       <a href="<?= base_url('siswa/edit_siswa/'.$siswas->kd_siswa);?>"><?= $siswas->nm_siswa; ?></a>

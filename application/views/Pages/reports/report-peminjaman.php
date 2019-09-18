@@ -21,6 +21,7 @@
                     <th scope="col">Nama Siswa</th>
                     <th scope="col">Lama Pinjam</th>
                     <th scope="col">Keterangan</th>
+                    <th scope="col">Denda</th>
                     <th scope="col">Status</th>
                   </tr>
                 </thead>
@@ -47,6 +48,9 @@
                     </td>
                     <td>
                       <?= $peminjamans->keterangan; ?>
+                    </td>
+                    <td>
+                      Rp.<?= $peminjamans->denda; ?>
                     </td>
                     <td>
                       <?= $peminjamans->status; ?>

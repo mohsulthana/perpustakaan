@@ -11,12 +11,11 @@ class Peminjaman_Model extends MY_Model {
 
   public function get_peminjaman()
   {
-    $this->db->select('*')->from('peminjaman');
     $this->db->join('siswa', 'peminjaman.kd_siswa = siswa.kd_siswa', 'inner');
-    // $this->db->join('peminjaman_detil', 'peminjaman.no_pinjam = peminjaman_detil.no_pinjam', 'inner');
-    // $this->db->join('buku', 'peminjaman.kd_buku = buku.kd_buku', 'inner');
-    $query = $this->db->get();
-    return $query;
+    $this->db->join('peminjaman_detil', 'peminjaman.no_pinjam = peminjaman_detil.no_pinjam', 'inner');
+    $this->db->join('pengembalian', 'peminjaman.no_pinjam = pengembalian.no_pinjam', 'inner');
+    $query = $this->db->get('peminjaman');
+    return $query->result();
   }
 
   public function get_peminjaman_detil()

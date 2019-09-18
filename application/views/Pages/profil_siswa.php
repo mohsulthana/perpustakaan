@@ -5,18 +5,17 @@
       <div class="row">
           <div class="card mb-3">
               <div class="row no-gutters">
-                <div class="col-md-4">
+                <div class="col-md-4 mt-5 ml-2">
                   <?php foreach($siswa->result() as $siswas) {?>
-                    <img src="<?= asset_url('photo/siswa/' . $siswas->foto )?>" class="card-img" alt="...">
+                    <img src="<?= asset_url('photo/siswa/' . $siswas->foto )?>" class="card-img" alt="Foto Siswa">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-7">
                   <div class="card-body">
                     <h5 class="card-title">Edit Profil Siswa</h5>
                     <div class="row">
                       <div class="col-6">
                         <p class="card-text">Kode Siswa</p>
                         <p class="card-text">Nama</p>
-                        <p class="card-text">NISN</p>
                         <p class="card-text">Agama</p>
                         <p class="card-text">Jenis Kelamin</p>
                         <p class="card-text">Tempat Lahir</p>
@@ -36,7 +35,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <a data-toggle="modal" data-target="#editData<?= $siswas->kd_siswa;?>" class="btn btn-info btn-lg">Edit</a>
+                      <a data-toggle="modal" style="width: 100%" data-target="#editData<?= $siswas->kd_siswa;?>" class="btn btn-info btn-lg">Edit</a>
                     </div>
                     <?php };?>
                   </div>
